@@ -1,7 +1,7 @@
 ---
   layout: default.md
-  title: "Developer Guide"
-  pageNav: 3
+    title: "Developer Guide"
+    pageNav: 3
 ---
 
 # AB-3 Developer Guide
@@ -241,13 +241,13 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Aspect: How undo & redo executes:**
 
 * **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+    * Pros: Easy to implement.
+    * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+    * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
 
@@ -277,11 +277,11 @@ _{Explain here how the data archiving feature will be implemented}_
 * University students who have multiple group projects across different modules
 
 **Value proposition**:
-* It is hard to manage the members of each specific group
-The app allow Creation of groups and subgroups
+* It is hard to manage the members of each specific group\
+  The app allow Creation of groups and subgroups
 
-* With many groups at the same time, it can become difficult to know when each one needs your attention.
-The app helps you manage your deadlines and meeting times and venues for each group
+* With many groups at the same time, it can become difficult to know when each one needs your attention.\
+  The app helps you manage your deadlines and meetings for each group
 
 
 
@@ -330,12 +330,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Use cases
 
 **System: StudyCircle (SC)**  
-**Use Case: UC1 - Create a Group**  
+**Use Case: UC1 - Create a group**  
 **Actor: User**
 
 **MSS**
 
-1.  User requests to create a new group by inputting new group details.
+1.  User requests to create a new group with specified details.
 2.  SC creates the new group and displays it.
 
     Use case ends.
@@ -344,24 +344,24 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. SC detects an error in the input.
 
-  * 1a1. SC specifies the error(s) and requests new input.
-  * 1a2. User enters new input.
+    * 1a1. SC specifies the error(s) and requests new input.
+    * 1a2. User enters new input.
 
       Steps 1a1-1a2 are repeated until the input is valid.\
-      Use case resumes from step 2.
+      Use case resumes from step 1.
 
-* *a. At any point the User decides not to add the Group.
+* *a. At any point the User decides not to add the group.
 
-    Use case ends.
+  Use case ends.
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC2 - Create a Contact**  
+**Use Case: UC2 - Create a contact**  
 **Actor: User**
 
 **MSS**
 
-1.  User requests to create a new contact by inputting new contact details.
+1.  User requests to create a new contact with specified details.
 2.  SC creates the new contact and displays it.
 
     Use case ends.
@@ -373,72 +373,66 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. SC specifies the error(s) and requests new input.
     * 1a2. User enters new input.
 
-        Steps 1a1-1a2 are repeated until the input is valid.\
-        Use case resumes from step 2.
+      Steps 1a1-1a2 are repeated until the input is valid.\
+      Use case resumes from step 2.
 
-* *a. At any point the User decides not to add the Contact.
+* *a. At any point the user decides not to add the contact.
 
-    Use case ends.
+  Use case ends.
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC3 - Attach a Contact to a Group**  
+**Use Case: UC3 - Attach a contact to a group**  
 **Actor: User**  
-**Precondition: The specified Group already exists within SC**
+**Precondition: The specified group already exists within SC**
 
 **MSS**
 
 1.  User requests to <u>list all contacts (UC6)</u>.
 2.  User requests to <u>list all groups (UC7)</u>.
-3.  User request to add specific contacts in the list to a specific group in the list.
+3.  User requests to add specific contacts in the first list to a specific group in the second list.
 4.  SC adds the contact to the group and notifies user of success of the task.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The list of Contacts is empty.
+* 1a. The contact the user wishes to add is not in the list.
 
-  * 1a1. User requests to <u>create a new contact (UC2)</u>.
+    * 1a1. User requests to <u>create a new contact (UC2)</u>.
 
-    Use case resumes from step 2.
-
-* 1b. The Contact the User wishes to add is not in the list.
-
-  * 1b1. User requests to <u>create a new contact (UC2)</u>.
-
-    Use case resumes from step 2.
+      Use case resumes from step 2.
 
 * 3a. SC detects that the specified contact does not exist.
 
-  * 3a1. SC shows an error message.
+    * 3a1. SC shows an error message.
 
-    Use case resumes at step 3.
+      Use case resumes at step 3.
 
 * 3b. SC detects that the specified group does not exist.
 
-  * 3b1. SC shows an error message.
-  
-    Use case resumes at step 3.
+    * 3b1. SC shows an error message.
+
+      Use case resumes at step 3.
 
 * 3c. SC detects that the contact is already in the group.
 
-  * 3c1. SC tells user that the contact is already in the group.
-  
-    Use case ends.
+    * 3c1. SC tells user that the contact is already in the group.
 
-* *a. At any point the User decides to stop the operation.
+      Use case ends.
 
-    Use case ends.
+* *a. At any point the user decides to stop the operation.
+
+  Use case ends.
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC5 - Delete a Group**  
+**Use Case: UC5 - Delete a group**  
 **Actor: User**
 
 **MSS**
 
-1.  User requests to <u>list groups (UC7)</u>.
+1.  User requests to <u>list all groups (UC7)</u>.
 2.  User chooses to delete a group from the list.
 3.  SC asks the user if they want to keep the member contacts.
 4.  User chooses to keep.
@@ -450,35 +444,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The list is empty.
+* 1a. The group the user wishes to delete is not in the list.
 
   Use case ends.
 
-* 1b. The Group the User wishes to delete is not in the list.
+* 2b. The specified group does not exist.
+
+    * 2b1. SC shows an error message.
+
+      Use case resumes from step 2.
+
+* 4a. User chooses to not keep.
+
+    * 4a1. SC asks for confirmation.
+    * 4a3. User confirms.
+    * 4a2. SC deletes the group and the contacts within the group, and displays the deleted group and contacts.
+
+      Use case ends.
+
+* *a. At any point the user chooses to cancel the operation.
 
   Use case ends.
-
-* 2b. The specified group does not exist. 
-
-  * 2b1. SC shows an error message. 
-
-    Use case resumes from step 2.
-
-* 4a. User chooses to not keep. 
-
-  * 4a1. SC asks for confirmation.
-  * 4a3. User confirms. 
-  * 4a2. SC deletes the group and the contacts within the group, and displays the deleted group and contacts.
-  
-    Use case ends.
-
-* a. At any point the user chooses to cancel the operation.
-
-    Use case ends.
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC6 - View all Contacts' details**  
+**Use Case: UC6 - View all contacts' details**  
 **Actor: User**
 
 **MSS**
@@ -490,15 +480,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. SC does not have any contacts currently saved into it.
+* 1a. SC does not have any contacts currently saved.
 
-  * 1a1. SC shows an error message.
-  
-    Use case ends.
+    * 1a1. SC shows an error message.
+
+      Use case ends.
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC7 - View all Groups’ details**  
+**Use Case: UC7 - View all groups’ details**  
 **Actor: User**
 
 **MSS**
@@ -510,33 +500,37 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. SC does not have any groups currently saved into it.
+* 1a. SC does not have any groups currently saved.
 
-  * 1a1. SC shows an error message.
+    * 1a1. SC shows an error message.
 
-    Use case ends.
+      Use case ends.
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC8 - View specific Contact’s details**  
+**Use Case: UC8 - View specific contact’s details**  
 **Actor: User**  
-**Preconditions: The specified Contact already exists within SC**
+**Preconditions: The specified contact already exists within SC**
 
 **MSS**
 
 1.  User requests to <u>list all contacts (UC6)</u>.
-2.  User requests to view a specific contact’s details in the list. 
+2.  User requests to view a specific contact’s details in the list.
 3.  SC shows the user the given contact’s details.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. SC does not have the specified contact. 
+* 2a. SC does not have the specified contact.
 
-  * 2a1. SC prompts user that there is no matching contact.
-  
-    Use case resumes from step 2.
+    * 2a1. SC prompts user that there is no matching contact.
+
+      Use case resumes from step 2.
+
+* *a. At any point the user decides to cancel the operation.
+
+  Use case ends.
 
 
 **System: StudyCircle (SC)**  
@@ -556,21 +550,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. SC does not have the specified group.
 
-  * 2a1. SC prompts user that there is no matching group.
+    * 2a1. SC prompts user that there is no matching group.
 
-    Use case resumes from step 2.
+      Use case resumes from step 2.
+
+* *a. At any point the user decides to cancel the operation.
+
+  Use case ends.
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC10 - Create an Event for a Group (task/meeting/assignment)**  
+**Use Case: UC10 - Create an event for a group (task/meeting/assignment)**  
 **Actor: User**  
-**Preconditions: The Group which the Event is to be attached to already exists**
+**Preconditions: The group which the event is to be attached to already exists**
 
 **MSS**
 
 1.  User requests for a <u>list of groups (UC7)</u>.
-2.  User enters Event details and specified Group. 
-3.  SC adds the Event to the Group and displays the new Event.
+2.  User enters event details and specified group.
+3.  SC adds the event to the group and displays the new event.
 
     Use case ends.
 
@@ -578,16 +576,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. SC detects an error in the input.
 
-  * 2a1. SC specifies the error(s) and requests new input.
-  * 2a2. User enters valid input.
+    * 2a1. SC specifies the error(s) and requests new input.
+    * 2a2. User enters valid input.
 
-    Use case resumes from step 3.
+      Use case resumes from step 3.
+
+* *a. At any point the user decides to cancel the operation.
+
+  Use case ends.
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC11 - Add notes to a Group**  
+**Use Case: UC11 - Add notes to a group**  
 **Actor: User**  
-**Preconditions: The specified Group already exists within SC**
+**Preconditions: The specified group already exists within SC**
 
 **MSS**
 
@@ -601,15 +603,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2b. The specified group does not exist.
 
-  * 2b1. SC shows an error message.
-  
-    Use case resumes from step 2.
+    * 2b1. SC shows an error message.
+
+      Use case resumes from step 2.
+
+* *a. At any point the user decides to cancel the operation.
+
+  Use case ends.
 
 
 **System: StudyCircle (SC)**  
 **Use Case: UC15 - Edit details of a specific contact**  
 **Actor: User**  
-**Preconditions: The specified Contact already exists within SC**
+**Preconditions: The specified contact already exists within SC**
 
 **MSS**
 
@@ -624,9 +630,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The detail is empty.
 
-  * 2a1. SC shows an error message.
+    * 2a1. SC shows an error message.
 
-    Use case end.
+      Use case end.
+
+* *a. At any point the user decides to cancel the operation.
+
+  Use case ends.
 
 
 **System: StudyCircle (SC)**  
@@ -635,9 +645,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <u>creates Group (UC1)</u>.
-2.  User <u>adds notes to this Group (UC11)</u>.
-3.  User <u>attaches a Contact to this Group (UC3)</u>.
+1.  User <u>creates a group (UC1)</u>.
+2.  User <u>adds notes to this group (UC11)</u>.
+3.  User <u>attaches a contact to this group (UC3)</u>.
 
     Loop step 3 until all needed contacts are added.
 4.  User <u>creates an Event (UC10)</u>.
@@ -652,7 +662,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  Should be able to hold up to 1000 groups without a noticeable sluggishness in performance for typical usage
-4.  user with above average typing speed for regular English text (i.e. not code, not system admin commands) should 
+4.  user with above average typing speed for regular English text (i.e. not code, not system admin commands) should
     be able to accomplish most of the tasks faster using commands than using the mouse.
 5.  Should work on any _mainstream OS_ without requiring an installer.
 6.  Should work without use of any third-party libraries/services.
@@ -686,15 +696,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
@@ -703,16 +713,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a person while all persons are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+    1. Test case: `delete 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+    1. Test case: `delete 0`<br>
+       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
 
@@ -720,6 +730,6 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
