@@ -44,8 +44,7 @@ public class AddEventCommandParser implements Parser<AddEventCommand> {
         }
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_DESCRIPTION);
 
-        //TODO: ParserUtil
-        Description description = new Description(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
         event = new Event(description);
 
         return new AddEventCommand(index, event);
