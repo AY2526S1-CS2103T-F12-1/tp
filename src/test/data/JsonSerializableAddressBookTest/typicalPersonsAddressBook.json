@@ -4,32 +4,32 @@
     "name" : "Alice Pauline",
     "phone" : "94351253",
     "email" : "alice@example.com",
-    "groupNames" : [ "CS2103" ]
+    "groupNames" : [ ]
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
     "email" : "johnd@example.com",
-    "groupNames" : [ "CS2103" ]
+    "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
     "email" : "heinz@example.com",
-    "groupNames" : [ ]
+    "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA2" ]
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
     "email" : "cornelia@example.com",
-    "groupNames" : [ "CS2103" ]
+    "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
     "email" : "werner@example.com",
-    "groupNames" : [ ]
+    "groupNames" : [ "CS2101 CA3" ]
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
     "email" : "lydia@example.com",
-    "groupNames" : [ ]
+    "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
   }, {
     "name" : "George Best",
     "phone" : "9482442",
@@ -38,24 +38,84 @@
   } ],
   "groups" : [ {
     "persons" : [ {
-      "name" : "Alice Pauline",
-      "phone" : "94351253",
-      "email" : "alice@example.com",
-      "groupNames" : [ "CS2103" ]
-    }, {
       "name" : "Benson Meier",
       "phone" : "98765432",
       "email" : "johnd@example.com",
-      "groupNames" : [ "CS2103" ]
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
+    }, {
+      "name" : "Carl Kurz",
+      "phone" : "95352563",
+      "email" : "heinz@example.com",
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA2" ]
     }, {
       "name" : "Daniel Meier",
       "phone" : "87652533",
       "email" : "cornelia@example.com",
-      "groupNames" : [ "CS2103" ]
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
+    }, {
+      "name" : "Fiona Kunz",
+      "phone" : "9482427",
+      "email" : "lydia@example.com",
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
     } ],
-    "events" : [ {
-      "description" : "milestone v1.3 release due 16/10/2025"
+    "events" : [ ],
+    "groupName" : "CS2103T"
+  }, {
+    "persons" : [ {
+      "name" : "Carl Kurz",
+      "phone" : "95352563",
+      "email" : "heinz@example.com",
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA2" ]
     } ],
-    "groupName" : "CS2103"
+    "events" : [ ],
+    "groupName" : "CS2101 CA2"
+  }, {
+    "persons" : [ {
+      "name" : "Benson Meier",
+      "phone" : "98765432",
+      "email" : "johnd@example.com",
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
+    }, {
+      "name" : "Daniel Meier",
+      "phone" : "87652533",
+      "email" : "cornelia@example.com",
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
+    }, {
+      "name" : "Elle Meyer",
+      "phone" : "9482224",
+      "email" : "werner@example.com",
+      "groupNames" : [ "CS2101 CA3" ]
+    }, {
+      "name" : "Fiona Kunz",
+      "phone" : "9482427",
+      "email" : "lydia@example.com",
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
+    } ],
+    "events" : [ ],
+    "groupName" : "CS2101 CA3"
+  }, {
+    "persons" : [ {
+      "name" : "Benson Meier",
+      "phone" : "98765432",
+      "email" : "johnd@example.com",
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
+    }, {
+      "name" : "Carl Kurz",
+      "phone" : "95352563",
+      "email" : "heinz@example.com",
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA2" ]
+    }, {
+      "name" : "Daniel Meier",
+      "phone" : "87652533",
+      "email" : "cornelia@example.com",
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
+    }, {
+      "name" : "Fiona Kunz",
+      "phone" : "9482427",
+      "email" : "lydia@example.com",
+      "groupNames" : [ "IS1108", "CS2103T", "CS2101 CA3" ]
+    } ],
+    "events" : [ ],
+    "groupName" : "IS1108"
   } ]
 }

@@ -1,6 +1,5 @@
 package seedu.address.testutil;
 
-import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.CARL;
 import static seedu.address.testutil.TypicalPersons.DANIEL;
@@ -22,16 +21,18 @@ import seedu.address.model.person.Person;
 public class TypicalGroups {
 
     public static final Group CS2103T = new GroupBuilder().withName("CS2103T")
-            .withPersons(ALICE, BENSON, DANIEL, CARL, FIONA)
+            .withPersons(BENSON, DANIEL, CARL, FIONA)
             .build();
     public static final Group CS2101_CA2 = new GroupBuilder().withName("CS2101 CA2")
-            .withPersons(ALICE, CARL)
+            .withPersons(CARL)
             .build();
     public static final Group CS2101_CA3 = new GroupBuilder().withName("CS2101 CA3")
-            .withPersons(ALICE, BENSON, DANIEL, ELLE, FIONA)
+            .withPersons(BENSON, DANIEL, ELLE, FIONA)
             .build();
     public static final Group IS1108 = new GroupBuilder().withName("IS1108")
             .withPersons(BENSON, DANIEL, CARL, FIONA)
+            .build();
+    public static final Group NO_MEMBER = new GroupBuilder().withName("NO MEMBER")
             .build();
 
     private TypicalGroups() {
@@ -52,6 +53,6 @@ public class TypicalGroups {
     }
 
     public static List<Group> getTypicalGroups() {
-        return new ArrayList<>(Arrays.asList(CS2103T, CS2101_CA2, CS2101_CA3, IS1108));
+        return new ArrayList<>(Arrays.asList(NO_MEMBER, CS2103T, CS2101_CA2, CS2101_CA3, IS1108));
     }
 }

@@ -7,7 +7,6 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -49,7 +48,6 @@ public class StorageManagerTest {
     }
 
     @Test
-    @Disabled("Temorarily disabled")
     public void addressBookReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
