@@ -14,11 +14,19 @@ Class UserPrefs
 
 Class UniquePersonList
 Class Person
-Class Address
 Class Email
 Class Name
 Class Phone
-Class Tag
+Class GroupName
+
+Class UniqueGroupList
+Class Group
+Class Name
+
+Class UniqueEventList
+Class Event {
+    description
+}
 
 Class I #FFFFFF
 }
@@ -40,15 +48,26 @@ UniquePersonList --> "~* all" Person
 Person *--> Name
 Person *--> Phone
 Person *--> Email
-Person *--> Address
-Person *--> "*" Tag
+Person *--> "*" GroupName
 
 Person -[hidden]up--> I
-UniquePersonList -[hidden]right-> I
+UniquePersonList -[hidden]left-> I
 
 Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
+Phone -[hidden]right-> Email
+Email -[hidden]right-> GroupName
 
 ModelManager --> "~* filtered" Person
+ModelManager --> "~* filtered" Group
+
+AddressBook *--> "~*" UniqueGroupList
+UniqueGroupList --> "~* all" Group
+Group *--> GroupName
+Group *-up-> "1" UniquePersonList
+Group *--> "1" UniqueEventList
+
+UniqueEventList *--> "~*" Event
+
+Group -[hidden]up--> I
+UniqueGroupList -[hidden]right-> I
 @enduml
