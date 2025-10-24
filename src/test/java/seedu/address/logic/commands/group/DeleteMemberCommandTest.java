@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,23 +28,27 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ModelStub;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
 import seedu.address.model.group.Group;
-import seedu.address.model.group.GroupName;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.GroupBuilder;
 
 
 public class DeleteMemberCommandTest {
-    public static final Group CS2103T_WA = new GroupBuilder().withName("CS2103T")
+    private static final Group CS2103T_WA = new GroupBuilder().withName("CS2103T")
             .withPersons(BENSON)
             .build();
 
-    public static final Group CS2103T = new GroupBuilder().withName("CS2103T")
+    private static final Group CS2103T = new GroupBuilder().withName("CS2103T")
             .withPersons(ALICE, BENSON)
             .build();
 
+    private static final Group CS2103T_EMPTY = new GroupBuilder().withName("CS2103T")
+            .withPersons()
+            .build();
+
     @Test
-    public void constructor_nullGroup_throwsNullPointerException() {
+    public void constructor_nullArguments_throwsNullPointerException() {
         Set<Index> persons = new HashSet<>();
         persons.add(INDEX_FIRST_PERSON);
         assertThrows(NullPointerException.class, () -> new DeleteMemberCommand(null, persons));
@@ -53,7 +58,7 @@ public class DeleteMemberCommandTest {
 
     @Test
     public void execute_invalidPersonIndex_throwsCommandException() {
-        ModelStub modelStub = new ModelStubWithPersonAndGroup();
+        Model modelStub = new ModelStubWithPersonAndGroup();
         Set<Index> invalidPersons = new HashSet<>();
         invalidPersons.add(INDEX_THIRD_PERSON);
         DeleteMemberCommand cmd = new DeleteMemberCommand(INDEX_FIRST_GROUP, invalidPersons);
@@ -64,7 +69,7 @@ public class DeleteMemberCommandTest {
 
     @Test
     public void execute_invalidPersonsIndex_throwsCommandException() {
-        ModelStub modelStub = new ModelStubWithPersonAndGroup();
+        Model modelStub = new ModelStubWithPersonAndGroup();
         Set<Index> invalidPersons = new HashSet<>();
         invalidPersons.add(INDEX_FIRST_PERSON);
         invalidPersons.add(INDEX_FOURTH_PERSON);
@@ -76,7 +81,7 @@ public class DeleteMemberCommandTest {
 
     @Test
     public void execute_invalidGroupIndex_throwsCommandException() {
-        ModelStub modelStub = new ModelStubWithPersonAndGroup();
+        Model modelStub = new ModelStubWithPersonAndGroup();
         Set<Index> persons = new HashSet<>();
         persons.add(INDEX_FIRST_PERSON);
         DeleteMemberCommand cmd = new DeleteMemberCommand(INDEX_SECOND_GROUP, persons);
@@ -87,18 +92,39 @@ public class DeleteMemberCommandTest {
 
     @Test
     public void execute_memberDeletedFromGroup_success() throws CommandException {
-        ModelStub modelStub = new ModelStubAcceptingDeleteMember();
+        Model modelStub = new ModelStubAcceptingDeleteMember();
         Set<Index> persons = new HashSet<>();
         persons.add(INDEX_FIRST_PERSON);
         DeleteMemberCommand cmd = new DeleteMemberCommand(INDEX_FIRST_GROUP, persons);
 
-        GroupName targetGroupName = modelStub.getFilteredGroupList().get(INDEX_FIRST_GROUP.getZeroBased()).getName();
+        Group targetGroup = modelStub.getFilteredGroupList().get(INDEX_FIRST_GROUP.getZeroBased());
 
         assertEquals(String.format(MESSAGE_SUCCESS,
-                modelStub.getFilteredPersonList().get(0).getNameAsString(),
-                targetGroupName), cmd.execute(modelStub).getFeedbackToUser());
+                targetGroup.getPersons().get(0).getNameAsString(),
+                targetGroup.getName()), cmd.execute(modelStub).getFeedbackToUser());
 
         assertEquals(CS2103T_WA, modelStub.getFilteredGroupList().get(0));
+
+    }
+
+    @Test
+    public void execute_multipleMembersDeletedFromGroup_success() throws CommandException {
+        Model modelStub = new ModelStubAcceptingDeleteMember();
+        Set<Index> persons = new HashSet<>();
+        persons.add(INDEX_FIRST_PERSON);
+        persons.add(INDEX_SECOND_PERSON);
+        DeleteMemberCommand cmd = new DeleteMemberCommand(INDEX_FIRST_GROUP, persons);
+
+        Group targetGroup = modelStub.getFilteredGroupList().get(INDEX_FIRST_GROUP.getZeroBased());
+        ObservableList<Person> personList = targetGroup.getPersons();
+        List<String> personListAsString = List.of(personList.get(0).getNameAsString(),
+                personList.get(1).getNameAsString());
+
+        assertEquals(String.format(MESSAGE_SUCCESS,
+                personListAsString.stream().collect(Collectors.joining(", ")),
+                targetGroup.getName()), cmd.execute(modelStub).getFeedbackToUser());
+
+        assertEquals(CS2103T_EMPTY, modelStub.getFilteredGroupList().get(0));
 
     }
 
