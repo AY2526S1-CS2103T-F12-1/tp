@@ -90,11 +90,13 @@ Shows a message explaining how to access the help page.
 Format: `help`
 
 ## Contact related commands
-### Adding a person: `add-contact`
+### Adding a contact: `add-contact`
 
 Adds a person to the StudyCircle contact list.
 
 Format: `add-contact n/NAME p/PHONE_NUMBER e/EMAIL [g/GROUP_INDEX]…​`
+
+* The contact name must be unique (case-insensitive comparison).
 
 <box type="tip" seamless>
 
@@ -102,8 +104,8 @@ Format: `add-contact n/NAME p/PHONE_NUMBER e/EMAIL [g/GROUP_INDEX]…​`
 </box>
 
 Examples:
-* `add-contact n/John Doe p/98765432 e/johnd@example.com`
-* `add-contact n/Betsy Crowe g/1 e/betsycrowe@example.com p/1234567 g/2`
+* `add-contact n/John Doe p/98765432 e/johnd@example.com` adds a contact name: John Doe, phone: 98765432, email: johnd@example.com to the contact list.
+* `add-contact n/Betsy Crowe g/1 e/betsycrowe@example.com p/1234567 g/2` adds a contact name: Betsy Crowe, phone: 1234567, email: betsycrowe@example.com to the contact list and add Betsy Crowe to group 1, 2.
 
 ### Deleting a contact : `delete-contact`
 Deletes the specified contact from the StudyCircle contact list.
@@ -118,8 +120,23 @@ Examples:
 
 * `delete-contact 1` deletes the 1st contact in the current displayed contact list.
 
+### Editing a contact : `edit-contact`
+Edits the details of the specified person's name, phone, email and groups.
 
-### Listing all persons : `list-contacts`
+Format: `edit-contact PERSON_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [g/GROUP INDEX]...`
+
+* The contact name must be unique (case-insensitive comparison).
+
+<box type="tip" seamless>
+
+**Tip:** A person can be added to multiple groups at once by specifying multiple `g/` prefixes
+</box>
+
+Examples:
+
+* `edit-contact 1 n/John p/123456 e/John@gmail.com g/1 g/2 g/3` edits the 1st contact in the current displayed contact list to name John, phone 123456, email John@gmail.com and add John to group 1, 2, 3.
+
+### Listing all contacts : `list-contacts`
 
 Shows a list of all contacts with their name, phone number, email and groups (if any) in the current displayed contact list.
 
@@ -227,7 +244,61 @@ Format: `add-event GROUP_INDEX d/DESCRIPTION`
 * The `GROUP_INDEX` **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `add-event 1 d/MVP Feature Specifications` adds the event `MVP FeatureSpecifications` to the 1st group
+* `add-event 1 d/MVP Feature Specifications` adds the event `MVP Feature Specifications` to the 1st group
+
+### Deleting an event from a group : `delete-event`
+Deletes the specified event from the specified group.
+
+Format: `delete-event GROUP_INDEX  e/EVENT_INDEX`
+
+* Both `GROUP_INDEX` and `EVENT_INDEX` **must be positive integers** 1, 2, 3, …​
+* `EVENT_INDEX` are taken from the current displayed event list
+
+Examples:
+* `delete-event 1 e/2` deletes the 2nd event from the 1st group.
+
+### Editing an event in a group : `edit-event`
+Edits an event description in the specified group.
+
+Format: `edit-event GROUP_INDEX e/EVENT_INDEX  d/EVENT_DESCRIPTION`
+
+* Both `GROUP_INDEX` and `EVENT_INDEX` **must be positive integers** 1, 2, 3, …​
+* `EVENT_INDEX` are taken from the current displayed event list
+
+Examples:
+* `edit-event 1 e/2 d/MVP Feature Specifications` edits the 2nd event in the 1st group to `MVP Feature Specifications`
+
+### Setting repository link for a group : `set-repo`
+Set repository link for the specified group.
+
+Format: `set-repo GROUP_INDEX r/REPOSITORY_LINK`
+
+* The `GROUP_INDEX` **must be a positive integer** 1, 2, 3, …​
+* The `REPOSITORY_LINK` **must include a valid domain**
+* The `REPOSITORY_LINK` **can start with 'http://' or 'https://' and may include a path to a repository**
+
+Examples:
+* `set-repo 2 r/https://github.com/AY2526S1-CS2103T-F12-1/tp` sets the repository link in 2nd group to 'https://github.com/AY2526S1-CS2103T-F12-1/tp'
+
+### Getting repository link from a group : `get-repo`
+Retrieves the repository link of the specified group and auto copy to your clipboard.
+
+Format: `get-repo GROUP_INDEX`
+
+* The `GROUP_INDEX` **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `get-repo 2` will get the repository link in 2nd group and copy it to your clipboard.
+
+### Deleting a repository link from a group : `delete-repo`
+Deletes the specified repository link from the specified group.
+
+Format: `delete-repo GROUP_INDEX`
+
+* The `GROUP_INDEX` **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `delete-repo 1` deletes repository link from the 1st group.
 
 ### Clearing the StudyCircle contact book : `clear`
 Clears the contact book of all groups and persons.
