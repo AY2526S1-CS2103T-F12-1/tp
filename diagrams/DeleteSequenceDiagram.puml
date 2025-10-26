@@ -55,12 +55,6 @@ activate Model
 Model --> DeleteCommand
 deactivate Model
 
-DeleteCommand -> Model : removePersonFromAllGroups(1)
-activate Model
-
-Model --> DeleteCommand
-deactivate Model
-
 create CommandResult
 DeleteCommand -> CommandResult
 activate CommandResult
