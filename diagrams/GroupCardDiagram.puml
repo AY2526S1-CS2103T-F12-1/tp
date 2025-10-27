@@ -1,0 +1,23 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+
+package GroupStructure <<Rectangle>>{
+Class GroupCard
+Class MiniPersonListPanel
+Class EventListPanel
+}
+
+package Model <<Rectangle>> {
+Class HiddenModel #FFFFFF
+}
+
+GroupCard *-down->  "1" MiniPersonListPanel
+GroupCard *-down-> "1" EventListPanel
+
+MiniPersonListPanel ..> Model
+EventListPanel ..> Model
+
+@enduml
