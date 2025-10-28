@@ -1,0 +1,78 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":AddGroupCommandParser" as AddGroupCommandParser LOGIC_COLOR
+participant "a:AddGroupCommand" as AddGroupCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("add-group n/CS2103T")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("add-group n/CS2103T")
+activate AddressBookParser
+
+create AddGroupCommandParser
+AddressBookParser -> AddGroupCommandParser
+activate AddGroupCommandParser
+
+AddGroupCommandParser --> AddressBookParser
+deactivate AddGroupCommandParser
+
+AddressBookParser -> AddGroupCommandParser : parse("n/CS2103T")
+activate AddGroupCommandParser
+
+create AddGroupCommand
+AddGroupCommandParser -> AddGroupCommand
+activate AddGroupCommand
+
+AddGroupCommand --> AddGroupCommandParser :
+deactivate AddGroupCommand
+
+AddGroupCommandParser --> AddressBookParser : a
+deactivate AddGroupCommandParser
+destroy AddGroupCommandParser
+
+AddressBookParser --> LogicManager : a
+deactivate AddressBookParser
+
+LogicManager -> AddGroupCommand : execute(m)
+activate AddGroupCommand
+
+AddGroupCommand -> Model : hasGroup(toAdd)
+activate Model
+Model --> AddGroupCommand
+deactivate Model
+
+AddGroupCommand -> Model : addGroup(toAdd)
+activate Model
+Model --> AddGroupCommand
+deactivate Model
+
+create CommandResult
+AddGroupCommand -> CommandResult : new CommandResult("New group created: ...")
+activate CommandResult
+CommandResult --> AddGroupCommand
+deactivate CommandResult
+
+AddGroupCommand --> LogicManager : r
+deactivate AddGroupCommand
+
+LogicManager -> Model : getAddressBook()
+activate Model
+Model --> LogicManager
+deactivate Model
+
+LogicManager -> Storage : saveAddressBook(addressBook)
+deactivate LogicManager
+
+[<-- LogicManager : r
+@enduml

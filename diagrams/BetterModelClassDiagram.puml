@@ -4,18 +4,44 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-AddressBook *-right-> "1" UniquePersonList
-AddressBook *-right-> "1" UniqueTagList
-UniqueTagList -[hidden]down- UniquePersonList
-UniqueTagList -[hidden]down- UniquePersonList
+package "seedu.address.model" <<Rectangle>> {
+    class AddressBook
+    class UniquePersonList
+    class UniqueGroupList
+}
 
-UniqueTagList -right-> "*" Tag
-UniquePersonList -right-> Person
+package "seedu.address.model.person" <<Rectangle>> {
+    class Person
+    class Name
+    class Phone
+    class Email
+}
 
-Person -up-> "*" Tag
+package "seedu.address.model.group" <<Rectangle>> {
+    class Group
+    class GroupName
+    class RepoLink
+    class UniqueEventList
+}
 
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
+' ---------------- Relationships ----------------
+AddressBook *-- "1" UniquePersonList
+AddressBook *-- "1" UniqueGroupList
+
+UniquePersonList *-- "*" Person
+UniqueGroupList *-- "*" Group
+
+' Group composition
+Group *-- "1" GroupName
+Group *-- "1" RepoLink
+Group *-- "1" UniqueEventList
+Group *-- "1" UniquePersonList
+
+' Person composition
+Person *-- "1" Name
+Person *-- "1" Phone
+Person *-- "1" Email
+
+' Association between Person and Group via GroupName
+Person --> "*" GroupName
 @enduml
