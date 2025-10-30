@@ -62,7 +62,12 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
+        "listing-all-contacts": "Listing all contacts",
+        "finding-contacts": "Finding contacts",
         "deleting-a-contact": "Deleting a contact",
+        "listing-all-groups": "Listing all groups",
+        "finding-groups": "Finding groups",
+        "deleting-a-group": "Deleting a group",
         "saving-data": "Saving data"
       },
       "headingKeywords": {}
