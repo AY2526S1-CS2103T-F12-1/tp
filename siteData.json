@@ -66,6 +66,7 @@
         "listing-all-contacts": "Listing all contacts",
         "finding-contacts": "Finding contacts",
         "deleting-a-contact": "Deleting a contact",
+        "editing-a-contact": "Editing a contact",
         "listing-all-groups": "Listing all groups",
         "adding-a-group": "Adding a group",
         "finding-groups": "Finding groups",
@@ -73,11 +74,14 @@
         "adding-a-member-to-a-group": "Adding a member to a group",
         "deleting-a-member-from-a-group": "Deleting a member from a group",
         "showing-and-editing-a-group-s-dashboard": "Showing and editing a group's dashboard",
-        "editing-a-contact": "Editing a contact",
+        "editing-a-contact-2": "Editing a contact",
         "editing-a-group": "Editing a group",
         "setting-repository-link-for-a-group": "Setting repository link for a group",
         "getting-repository-link-from-a-group": "Getting repository link from a group",
         "deleting-a-repository-link-from-a-group": "Deleting a repository link from a group",
+        "adding-an-event": "Adding an event",
+        "deleting-an-event": "Deleting an event",
+        "editing-an-event": "Editing an event",
         "saving-data": "Saving data"
       },
       "headingKeywords": {}
