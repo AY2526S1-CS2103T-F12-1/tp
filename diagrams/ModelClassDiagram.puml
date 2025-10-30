@@ -51,7 +51,7 @@ Person *--> Email
 Person *--> "*" GroupName
 
 Person -[hidden]up--> I
-UniquePersonList -[hidden]left-> I
+UniquePersonList -[hidden]right-> I
 
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Email
@@ -69,5 +69,5 @@ Group *--> "1" UniqueEventList
 UniqueEventList *--> "~*" Event
 
 Group -[hidden]up--> I
-UniqueGroupList -[hidden]right-> I
+UniqueGroupList -[hidden]left-> I
 @enduml
