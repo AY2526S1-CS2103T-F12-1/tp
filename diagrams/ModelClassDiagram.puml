@@ -18,6 +18,7 @@ Class Email
 Class Name
 Class Phone
 Class GroupName
+Class RepoLink
 
 Class UniqueGroupList
 Class Group
@@ -62,9 +63,10 @@ ModelManager --> "~* filtered" Group
 
 AddressBook *--> "~*" UniqueGroupList
 UniqueGroupList --> "~* all" Group
-Group *--> GroupName
+Group *--> "1" GroupName
 Group *-up-> "1" UniquePersonList
 Group *--> "1" UniqueEventList
+Group *--> "1" RepoLink
 
 UniqueEventList *--> "~*" Event
 
