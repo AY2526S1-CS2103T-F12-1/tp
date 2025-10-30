@@ -40,7 +40,7 @@
       "src": "DeveloperGuide.md",
       "title": "Developer Guide",
       "headings": {
-        "ab-3-developer-guide": "AB-3 Developer Guide",
+        "studycircle-developer-guide": "StudyCircle Developer Guide",
         "acknowledgements": "Acknowledgements",
         "setting-up-getting-started": "Setting up, getting started",
         "design": "Design",
@@ -131,6 +131,7 @@
         "setting-repository-link-for-a-group-set-repo": "Setting repository link for a group : set-repo",
         "getting-repository-link-from-a-group-get-repo": "Getting repository link from a group : get-repo",
         "deleting-a-repository-link-from-a-group-delete-repo": "Deleting a repository link from a group : delete-repo",
+        "showing-the-dashboard-of-a-group-show-dashboard": "Showing the dashboard of a group: show-dashboard ",
         "clearing-the-studycircle-contact-book-clear": "Clearing the StudyCircle contact book : clear",
         "exiting-the-program-exit": "Exiting the program : exit",
         "saving-the-data": "Saving the data",
