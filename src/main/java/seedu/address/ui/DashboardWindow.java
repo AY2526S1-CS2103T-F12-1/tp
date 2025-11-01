@@ -434,5 +434,12 @@ public class DashboardWindow {
         }
     }
 
+    /**
+     * Hides the dashboard window.
+     */
+    public void hide() {
+        root.hide();
+    }
+
 }
 

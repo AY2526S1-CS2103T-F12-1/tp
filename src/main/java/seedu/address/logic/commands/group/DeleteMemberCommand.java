@@ -3,7 +3,6 @@ package seedu.address.logic.commands.group;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CONTACT_INDEX;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_GROUP_INDEX;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -32,11 +31,11 @@ public class DeleteMemberCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete persons specified by index numbers"
             + "from the specified group's member list\n"
             + "Parameters: "
-            + PREFIX_GROUP_INDEX + "GROUP_INDEX (must be a positive integer) "
+            + "GROUP_INDEX (must be a positive integer) "
             + PREFIX_CONTACT_INDEX + "CONTACT_INDEX (must be a positive integer of contacts in group's member list) "
             + "[" + PREFIX_CONTACT_INDEX + "CONTACT_INDEXES]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_GROUP_INDEX + "1 "
+            + "1 "
             + PREFIX_CONTACT_INDEX + "2 "
             + PREFIX_CONTACT_INDEX + "3 "
             + PREFIX_CONTACT_INDEX + "4 ";

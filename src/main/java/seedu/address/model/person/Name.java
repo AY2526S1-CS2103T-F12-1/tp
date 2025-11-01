@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names is case-insensitive, should not be blank and should only contain:\n"
+            "Names are case-insensitive, should not be blank and should only contain:\n"
                     + "- Maximum 50 characters\n"
                     + "- alphanumeric characters\n"
                     + "- spaces (no consecutive spaces)\n"

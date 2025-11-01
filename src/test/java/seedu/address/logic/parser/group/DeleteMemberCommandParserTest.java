@@ -2,7 +2,6 @@ package seedu.address.logic.parser.group;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CONTACT_INDEX;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_GROUP_INDEX;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -15,7 +14,6 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.group.DeleteMemberCommand;
 
 
@@ -27,7 +25,7 @@ public class DeleteMemberCommandParserTest {
         Set<Index> persons = new HashSet<>();
         persons.add(INDEX_FIRST_PERSON);
 
-        assertParseSuccess(parser, " " + PREFIX_GROUP_INDEX + "3 " + PREFIX_CONTACT_INDEX + "1",
+        assertParseSuccess(parser, " " + "3 " + PREFIX_CONTACT_INDEX + "1",
                 new DeleteMemberCommand(INDEX_THIRD_GROUP, persons));
     }
 
@@ -37,7 +35,7 @@ public class DeleteMemberCommandParserTest {
         persons.add(INDEX_FIRST_PERSON);
         persons.add(INDEX_SECOND_PERSON);
 
-        assertParseSuccess(parser, " " + PREFIX_GROUP_INDEX + "3 " + PREFIX_CONTACT_INDEX + "1 "
+        assertParseSuccess(parser, " " + "3 " + PREFIX_CONTACT_INDEX + "1 "
                         + PREFIX_CONTACT_INDEX + "2",
                 new DeleteMemberCommand(INDEX_THIRD_GROUP, persons));
     }
@@ -47,15 +45,8 @@ public class DeleteMemberCommandParserTest {
         assertParseFailure(parser, "die",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteMemberCommand.MESSAGE_USAGE));
 
-        assertParseFailure(parser, " " + PREFIX_GROUP_INDEX + "3",
+        assertParseFailure(parser, " " + "3",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteMemberCommand.MESSAGE_USAGE));
     }
 
-    @Test
-    public void parse_duplicatePrefixes_throwsParseException() {
-        assertParseFailure(parser,
-                " " + PREFIX_GROUP_INDEX + "3 " + PREFIX_GROUP_INDEX + "3 " + PREFIX_CONTACT_INDEX + "1",
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_GROUP_INDEX));
-
-    }
 }

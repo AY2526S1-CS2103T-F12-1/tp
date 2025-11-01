@@ -246,7 +246,7 @@ Examples:
 ### Adding a member to a group : `add-member`
 Adds the specified contacts to the specified group.
 
-Format: `add-member g/GROUP_INDEX c/CONTACT_INDEX [c/CONTACT_INDEX]…​`
+Format: `add-member GROUP_INDEX c/CONTACT_INDEX [c/CONTACT_INDEX]…​`
 
 * Both `GROUP_INDEX` and `CONTACT_INDEXES` **must be positive integers** 1, 2, 3, …​
 * `CONTACT_INDEXES` can be one or multiple contact indexes
@@ -259,23 +259,23 @@ Format: `add-member g/GROUP_INDEX c/CONTACT_INDEX [c/CONTACT_INDEX]…​`
 
 <box type="warning" seamless>
 
-**Caution:** Editing multiple groups at once is not supported. Specifying multiple `g/` prefixes (e.g., `g/1 g/2`) is not allowed.
+**Caution:** Editing multiple groups at once is not supported. 
 </box>
 
 Examples:
-* `add-member g/1 c/2` adds the 2nd contact to the 1st group.
-* `add-member g/1 c/1 c/2` adds the 1st and 2nd contact to the 1st group
+* `add-member 1 c/2` adds the 2nd contact to the 1st group.
+* `add-member 1 c/1 c/2` adds the 1st and 2nd contact to the 1st group
 
 ### Deleting a member from a group : `delete-member`
 Deletes the specified contacts from the specified group.
 
-Format: `delete-member g/GROUP_INDEX c/CONTACT_INDEX [c/CONTACT_INDEX]…​`
+Format: `delete-member GROUP_INDEX c/CONTACT_INDEX [c/CONTACT_INDEX]…​`
 
 * Same as [add-member](#adding-a-member-to-a-group-add-member) command
 
 Examples:
-* `delete-member g/1 c/2` deletes the 2nd contact from the 1st group.
-* `delete-member g/1 c/1 c/2` deletes the 1st and 2nd contacts from the 1st group
+* `delete-member 1 c/2` deletes the 2nd contact from the 1st group.
+* `delete-member 1 c/1 c/2` deletes the 1st and 2nd contacts from the 1st group
 
 ### Adding an event to a group : `add-event`
 Adds an event to the specified group.
@@ -430,8 +430,8 @@ Action                | Format, Examples
 **Edit group** | `edit-group GROUP_INDEX n/GROUP_NAME`<br> e.g., `edit-group 1 n/cs2103 team 1`
 **Find group**      | `find-group KEYWORD [MORE_KEYWORDS]…​`<br> e.g., `find-group CA1 CA2`
 **List groups**     | `list-groups`
-**Add members to a group**       | `add-member g/GROUP_INDEX c/CONTACT_INDEX [c/CONTACT_INDEX]…​` <br> e.g., `add-member g/1 c/1`, `add-member g/1 c/1 c/2`
-**Delete members from a group**  | `delete-member g/GROUP_INDEX c/CONTACT_INDEX [c/CONTACT_INDEX]…​` <br> e.g., `delete-member g/1 c/1`, `delete-member g/1 c/1 c/2`
+**Add members to a group**       | `add-member GROUP_INDEX c/CONTACT_INDEX [c/CONTACT_INDEX]…​` <br> e.g., `add-member 1 c/1`, `add-member 1 c/1 c/2`
+**Delete members from a group**  | `delete-member GROUP_INDEX c/CONTACT_INDEX [c/CONTACT_INDEX]…​` <br> e.g., `delete-member 1 c/1`, `delete-member 1 c/1 c/2`
 **Add an event to a group**     | `add-event GROUP_INDEX d/DESCRIPTION`<br> e.g., `add-event 2 d/do project work`
 **Delete an event from a group** | `delete-event GROUP_INDEX e/EVENT_INDEX` <br> e.g., `delete-event 1 e/2`
 **Edit an event in a group** | `edit-event GROUP_INDEX e/EVENT_INDEX d/EVENT_DESCRIPTION` <br> e.g., `edit-event 1 e/2 d/MVP Feature Specifications`

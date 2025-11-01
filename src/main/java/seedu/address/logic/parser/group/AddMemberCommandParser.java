@@ -2,7 +2,6 @@ package seedu.address.logic.parser.group;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CONTACT_INDEX;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_GROUP_INDEX;
 
 import java.util.Set;
 
@@ -27,18 +26,20 @@ public class AddMemberCommandParser implements Parser<AddMemberCommand> {
     @Override
     public AddMemberCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_GROUP_INDEX, PREFIX_CONTACT_INDEX);
+                ArgumentTokenizer.tokenize(args, PREFIX_CONTACT_INDEX);
 
         Set<Index> personIndexes;
         Index groupIndex;
 
-        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_GROUP_INDEX, PREFIX_CONTACT_INDEX)
-                || !argMultimap.getPreamble().isEmpty()) {
+        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_CONTACT_INDEX) || argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddMemberCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_GROUP_INDEX);
-        groupIndex = ParserUtil.parseGroupIndex(argMultimap.getValue(PREFIX_GROUP_INDEX).get());
+        try {
+            groupIndex = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (ParseException pe) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddMemberCommand.MESSAGE_USAGE), pe);
+        }
         personIndexes = ParserUtil.parseContactIndexes(argMultimap.getAllValues(PREFIX_CONTACT_INDEX));
 
 
