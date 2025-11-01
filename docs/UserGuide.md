@@ -34,7 +34,7 @@ SC is optimised for use via a Command Line Interface (CLI) while still allowing 
 
    * `list-contacts` : Lists all contacts.
 
-   * `add-contact n/John Doe p/98765432 e/johnd@example.com` : Adds a contact named `John Doe` to the contact list.
+   * `add-contact n/John Doe p/98765432 e/e1399155@u.nus.edu` : Adds a contact named `John Doe` to the contact list.
 
    * `delete-contact 3` : Deletes the 3rd contact shown in the current contact list.
 
@@ -54,7 +54,7 @@ SC is optimised for use via a Command Line Interface (CLI) while still allowing 
 **Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add-contact n/John Doe`.
+  e.g. in `add-contact n/NAME`, `NAME` is a parameter which can be used as `add-contact n/John Doe`.
 
 * Items in square brackets are optional.<br>
   e.g `n/NAME [g/GROUP_INDEX]` can be used as `n/John Doe g/1` or as `n/John Doe`.
@@ -156,7 +156,8 @@ Other parameter are the same as [add-contact](#adding-a-contact-add-contact) com
 </box>
 Examples:
 
-* `edit-contact 1 n/John p/12345678 e/e1234567@u.nus.edu g/1 g/2` edits the 1st contact in the current displayed contact list to name John, phone 123456, email e1234567@u.nus.edu and add John to group 1 and 2.
+* `edit-contact 1 n/John p/12345678 e/e1234567@u.nus.edu g/1 g/2` edits the 1st contact in the current displayed 
+  contact list to name John, phone 12345678, email e1234567@u.nus.edu and add John to group 1 and 2.
 
 ### Listing all contacts : `list-contacts`
 
@@ -178,7 +179,7 @@ Format: `find-contact KEYWORD [MORE_KEYWORDS]…​`
 Examples:
 * `find-contact rob` will show the contact list with all people whose name contains `rob`
 * `find-contact Aaron Darren` will show the contact list with all people whose name contains either `aaron` or `darren`
-* `find-contact Aa Da` will match `aaron` or `darren`
+* `find-contact Aa Da` will match `aaron` and `darren`
 
 ## Group related commands
 ---
@@ -217,7 +218,7 @@ Format: `edit-group GROUP_INDEX n/GROUP_NAME`
 * `GROUP_NAME` Constraint is same as [add-group](#adding-a-group-add-group) command
 
 Examples:
-* `edit-group 1 n/cs2103 team 1` deletes the 1st group in the current displayed group list.
+* `edit-group 1 n/cs2103 team 1` edits the 1st group in the current displayed group list.
 
 ### Listing all groups : `list-groups`
 Shows a list of all groups with their members and events in the current displayed group list.
@@ -271,8 +272,6 @@ Deletes the specified contacts from the specified group.
 
 Format: `delete-member g/GROUP_INDEX c/CONTACT_INDEX [c/CONTACT_INDEX]…​`
 
-* Same as [add-member](#adding-a-member-to-a-group-add-member) command
-
 Examples:
 * `delete-member g/1 c/2` deletes the 2nd contact from the 1st group.
 * `delete-member g/1 c/1 c/2` deletes the 1st and 2nd contacts from the 1st group
@@ -302,8 +301,6 @@ Examples:
 Edits an event description in the specified group.
 
 Format: `edit-event GROUP_INDEX e/EVENT_INDEX  d/EVENT_DESCRIPTION`
-
-* Same as [delete-event](#deleting-an-event-from-a-group-delete-event) command
 
 Examples:
 * `edit-event 1 e/2 d/MVP Feature Specifications` edits the 2nd event in the 1st group to `MVP Feature Specifications`
@@ -353,6 +350,8 @@ Format: `show-dashboard GROUP_INDEX`
 
 * The `GROUP_INDEX` **must be a positive integer** 1, 2, 3, …​
 * The note box on the dashboard panel is editable, and auto-saves your notes on every keystroke
+* While the dashboard is showing, editing that group's fields (members/events/repolink/name) will not update the 
+  showing dashboard and will require another `show-dashboard` command to update those fields
 
 Examples:
 * `show-dashboard 1` shows the dashboard of group 1.
@@ -386,11 +385,11 @@ welcome to update data directly by editing that data file.
 **Caution:**
 If your changes to the data file makes its format invalid, StudyCircle will discard all data and start with an empty 
 data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause StudyCIrcle to behave in unexpected ways (e.g., if a value entered is outside the 
+Furthermore, certain edits can cause StudyCircle to behave in unexpected ways (e.g., if a value entered is outside the 
 acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-### Linking and redirecting to GitHub Repo / Canvas course website `[coming in v0.1.4]`
+### Linking and redirecting to GitHub Repo / Canvas course website `[coming in v0.1.7]`
 
 _Details coming soon ..._
 
@@ -438,6 +437,6 @@ Action                | Format, Examples
 **Set repository link for a group** | `set-repo GROUP_INDEX r/REPOSITORY_LINK` <br> e.g., `set-repo 2 r/https://github.com/AY2526S1-CS2103T-F12-1/tp`
 **Get repository link from a group** | `get-repo GROUP_INDEX` <br> e.g., `get-repo 2`
 **Delete a repository link from a group** | `delete-repo GROUP_INDEX` <br> e.g., `delete-repo 1`
-**Show a group's dsahboard** | `show-dashboard GROUP_INDEX`<br> e.g., `show-dashboard 1`
+**Show a group's dashboard** | `show-dashboard GROUP_INDEX`<br> e.g., `show-dashboard 1`
 **Clear StudyCircle contacts and groups**| `clear`
 **Help**              | `help`

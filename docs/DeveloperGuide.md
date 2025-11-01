@@ -21,7 +21,8 @@
 
 ## **Setting up, getting started**
 
-Refer to the guide [_Setting up and getting started_](SettingUp.md).
+Refer to the section "Quick start" in the
+[_User Guide_](https://ay2526s1-cs2103t-f12-1.github.io/tp/UserGuide.html).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -294,11 +295,11 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
+* [Documentation guide](https://ay2526s1-cs2103t-f12-1.github.io/tp/Documentation.html)
+* [Testing guide](https://ay2526s1-cs2103t-f12-1.github.io/tp/Testing.html)
+* [Logging guide](https://ay2526s1-cs2103t-f12-1.github.io/tp/Logging.html)
+* [Configuration guide](https://ay2526s1-cs2103t-f12-1.github.io/tp/Configuration.html)
+* [DevOps guide](https://ay2526s1-cs2103t-f12-1.github.io/tp/DevOps.html)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -323,7 +324,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                                 | I want to …​                                                                            | So that I can…​                                                                                     |
+| Priority | As a …​                                                 | I want to …​                                                                            | So that…​                                                                                           |
 |----------|---------------------------------------------------------|-----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | `* * *`  | user                                                    | add contacts from my school projects with their phone numbers and email into the system | I can manage the contact information of all the relevant people for the semester                    |
 | `* * *`  | user                                                    | delete contacts from the contact list when I no longer need a person's contact          | my contact list is not too cluttered.                                                               |
@@ -463,26 +464,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC5 - Delete a group**  
+**Use Case: UC4 - Delete a group**  
 **Actor: User**
 
 **MSS**
 
-1.  User requests to <u>list all groups (UC7)</u>.
+1.  User requests to <u>list all groups (UC6)</u>.
 2.  User chooses to delete a group from the list.
-3.  SC asks the user if they want to keep the member contacts.
-4.  User chooses to keep.
-5.  SC asks for confirmation.
-6.  User confirms the deletion.
-7.  SC deletes the group, keeping the member contacts, and displays the deleted group.
+3.  SC deletes the group, keeping the member contacts, and displays the deleted group.
 
   Use case ends.
 
 **Extensions**
-
-* 1a. The group the user wishes to delete is not in the list.
-
-  Use case ends.
 
 * 2b. The specified group does not exist.
 
@@ -490,21 +483,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from step 2.
 
-* 4a. User chooses to not keep.
-
-    * 4a1. SC asks for confirmation.
-    * 4a3. User confirms.
-    * 4a2. SC deletes the group and the contacts within the group, and displays the deleted group and contacts.
-
-      Use case ends.
-
-* *a. At any point the user chooses to cancel the operation.
-
-  Use case ends.
-
-
 **System: StudyCircle (SC)**  
-**Use Case: UC6 - View all contacts' details**  
+**Use Case: UC5 - View all contacts' details**  
 **Actor: User**
 
 **MSS**
@@ -524,7 +504,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC7 - View all groups’ details**  
+**Use Case: UC6 - View all groups’ details**  
 **Actor: User**
 
 **MSS**
@@ -544,13 +524,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC8 - View specific contact’s details**  
+**Use Case: UC7 - View specific contact’s details**  
 **Actor: User**  
 **Preconditions: The specified contact already exists within SC**
 
 **MSS**
 
-1.  User requests to <u>list all contacts (UC6)</u>.
+1.  User requests to <u>list all contacts (UC5)</u>.
 2.  User requests to view a specific contact’s details in the list.
 3.  SC shows the user the given contact’s details.
 
@@ -570,13 +550,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC9 - View specific Group’s details**  
+**Use Case: UC8 - View specific Group’s details**  
 **Actor: User**  
 **Preconditions: The specified Group already exists within SC**
 
 **MSS**
 
-1.  User requests to <u>list groups (UC7)</u>.
+1.  User requests to <u>list groups (UC6)</u>.
 2.  User requests to view a specific group's details in the list.
 3.  SC shows user the given group’s details.
 
@@ -596,13 +576,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC10 - Create an event for a group (task/meeting/assignment)**  
+**Use Case: UC9 - Create an event for a group (task/meeting/assignment)**  
 **Actor: User**  
 **Preconditions: The group which the event is to be attached to already exists**
 
 **MSS**
 
-1.  User requests for a <u>list of groups (UC7)</u>.
+1.  User requests for a <u>list of groups (UC6)</u>.
 2.  User enters event details and specified group.
 3.  SC adds the event to the group and displays the new event.
 
@@ -623,13 +603,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC11 - Add notes to a group**  
+**Use Case: UC10 - Add notes to a group**  
 **Actor: User**  
 **Preconditions: The specified group already exists within SC**
 
 **MSS**
 
-1.  User requests for a <u>list of groups (UC7)</u>.
+1.  User requests for a <u>list of groups (UC6)</u>.
 2.  User requests to add a note to the specific group in the list.
 3.  SC adds the note to the group and displays a confirmation message.
 
@@ -649,13 +629,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **System: StudyCircle (SC)**  
-**Use Case: UC15 - Edit details of a specific contact**  
+**Use Case: UC11 - Edit details of a specific contact**  
 **Actor: User**  
 **Preconditions: The specified contact already exists within SC**
 
 **MSS**
 
-1.  User requests for a <u>list of contacts (UC6)</u>.
+1.  User requests for a <u>list of contacts (UC5)</u>.
 2.  User specifies a specific contact and selects which detail they would like to edit.
 3.  User enters new details that they want to edit.
 4.  SC edit the contact and display a confirmation message.
@@ -673,25 +653,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * *a. At any point the user decides to cancel the operation.
 
   Use case ends.
-
-
-**System: StudyCircle (SC)**  
-**Use Case: UC23 - Start a new project group with a deadline**  
-**Actor: User**
-
-**MSS**
-
-1.  User <u>creates a group (UC1)</u>.
-2.  User <u>adds notes to this group (UC11)</u>.
-3.  User <u>attaches a contact to this group (UC3)</u>.
-
-    Loop step 3 until all needed contacts are added.
-4.  User <u>creates an Event (UC10)</u>.
-
-    Loop step 4 until all Events are added.
-
-    Use case ends.
-
 
 ### Non-Functional Requirements
 
@@ -888,7 +849,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Showing a group's dashboard
 
-    1. Prerequisites: List allgroups using the `list-groups` commands.
+    1. Prerequisites: List all groups using the `list-groups` command.
 
     1. Test case: `show-dashboard 1`<br>
        Expected: The dashboard panel for the selected group is shown to the user.
@@ -916,7 +877,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: must have at least one contact in the contact list
 
     1. Test case: `edit-contact 1 n/mary`<br>
-       Expected: Fist contact name in the contact list should change to mary
+       Expected: First contact name in the contact list should change to mary
 
 ### Editing a group
 
