@@ -3,6 +3,7 @@
 skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
+skinparam defaultFontSize 20
 
 Package Model as ModelPackage <<Rectangle>>{
 Class "<<interface>>\nReadOnlyAddressBook" as ReadOnlyAddressBook
@@ -23,6 +24,7 @@ Class RepoLink
 Class UniqueGroupList
 Class Group
 Class Name
+Class Dashboard
 
 Class UniqueEventList
 Class Event {
@@ -64,9 +66,10 @@ ModelManager --> "~* filtered" Group
 AddressBook *--> "~*" UniqueGroupList
 UniqueGroupList --> "~* all" Group
 Group *--> "1" GroupName
+Group *--> "1" Dashboard
 Group *-up-> "1" UniquePersonList
 Group *--> "1" UniqueEventList
-Group *--> "1" RepoLink
+Group *--> "0...1" RepoLink
 
 UniqueEventList *--> "~*" Event
 
