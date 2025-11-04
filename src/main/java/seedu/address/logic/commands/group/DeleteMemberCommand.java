@@ -78,7 +78,7 @@ public class DeleteMemberCommand extends Command {
 
             Person targetPerson = lastShownMiniPersonList.get(contactIndex.getZeroBased());
             personsToRemove.add(targetPerson);
-            personNames.add(targetPerson.getNameAsString());
+            personNames.add(targetPerson.getNameAsString() + " (" + targetPerson.getEmail() + ")");
         }
 
         for (Person toRemove : personsToRemove) {

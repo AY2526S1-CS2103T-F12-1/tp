@@ -79,11 +79,12 @@ public class AddMemberCommand extends Command {
             Person targetPerson = lastShownPersonList.get(contactIndex.getZeroBased());
 
             if (groupToAddTo.containsPerson(targetPerson)) {
-                throw new CommandException(String.format(MESSAGE_DUPLICATE_PERSON, targetPerson.getName()));
+                throw new CommandException(String.format(MESSAGE_DUPLICATE_PERSON,
+                        targetPerson.getName() + " (" + targetPerson.getEmail() + ")"));
             }
 
             personsToAdd.add(targetPerson);
-            personNames.add(targetPerson.getNameAsString());
+            personNames.add(targetPerson.getNameAsString() + " (" + targetPerson.getEmail() + ")");
         }
 
         for (Person toAdd : personsToAdd) {
