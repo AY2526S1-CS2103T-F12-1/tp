@@ -99,27 +99,33 @@ public class ArgumentTokenizer {
 
         // Map prefixes to their argument values (if any)
         ArgumentMultimap argMultimap = new ArgumentMultimap();
-        for (int i = 0; i < prefixPositions.size() - 1; i++) {
+        PrefixPosition prev = prefixPositions.get(0);
+        for (int i = 1; i < prefixPositions.size(); i++) {
             // Extract and store prefixes and their arguments
             Prefix argPrefix = prefixPositions.get(i).getPrefix();
-            String argValue = extractArgumentValue(argsString, prefixPositions.get(i), prefixPositions.get(i + 1));
-            argMultimap.put(argPrefix, argValue);
+            // If a prefix is unique, we should ignore reoccurrences in its arguments
+            if (argPrefix.isUnique() && argPrefix.equals(prev.getPrefix())) {
+                continue;
+            }
+            String argValue = extractArgumentValue(argsString, prev, prefixPositions.get(i));
+            argMultimap.put(prev.getPrefix(), argValue);
+            prev = prefixPositions.get(i);
         }
 
         return argMultimap;
     }
 
     /**
-     * Returns the trimmed value of the argument in the arguments string specified by {@code currentPrefixPosition}.
-     * The end position of the value is determined by {@code nextPrefixPosition}.
+     * Returns the trimmed value of the argument in the arguments string specified by {@code previousPrefixPosition}.
+     * The end position of the value is determined by {@code currentPrefixPosition}.
      */
     private static String extractArgumentValue(String argsString,
-                                        PrefixPosition currentPrefixPosition,
-                                        PrefixPosition nextPrefixPosition) {
-        Prefix prefix = currentPrefixPosition.getPrefix();
+                                        PrefixPosition previousPrefixPosition,
+                                        PrefixPosition currentPrefixPosition) {
+        Prefix prefix = previousPrefixPosition.getPrefix();
 
-        int valueStartPos = currentPrefixPosition.getStartPosition() + prefix.getPrefix().length();
-        String value = argsString.substring(valueStartPos, nextPrefixPosition.getStartPosition());
+        int valueStartPos = previousPrefixPosition.getStartPosition() + prefix.getPrefix().length();
+        String value = argsString.substring(valueStartPos, currentPrefixPosition.getStartPosition());
 
         return value.trim();
     }
@@ -128,7 +134,7 @@ public class ArgumentTokenizer {
      * Represents a prefix's position in an arguments string.
      */
     private static class PrefixPosition {
-        private int startPosition;
+        private final int startPosition;
         private final Prefix prefix;
 
         PrefixPosition(Prefix prefix, int startPosition) {
